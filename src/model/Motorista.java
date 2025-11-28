@@ -1,17 +1,24 @@
 package model;
 
 public class Motorista {
-    private String nome;
-    private int cpf;
-    private int telefone;
-    private int senha;
-    private String placaCarro;
+    private boolean disponibilidade;
+    private Veiculo veiculo;
 
-    public Motorista(String nome, int cpf, int telefone, int senha, String placaCarro) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.senha = senha;
-        this.placaCarro = placaCarro;
+    public Motorista ( Veiculo veiculo) {
+        this.disponibilidade = true; 
+        this.veiculo = veiculo;
     }
+     public boolean aceitarCorrida() {
+        if (disponibilidade) {
+            disponibilidade = false;
+            return true;
+        }
+        return false;
+    }
+
+    public void finalizarCorrida() {
+        disponibilidade = true;
+    }
+
+   
 }
