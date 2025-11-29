@@ -17,7 +17,7 @@ public class CNH {
         int anoAtual = 2025;
 
         if(this.anoValidade < anoAtual){
-            System.out.println("Carteira inválida! Vence em: " +this.anoValidade);
+            System.out.println("Carteira inválida! Venceu em: " + this.anoValidade);
             return false;
         }
         return true;
