@@ -30,7 +30,7 @@ public class Corrida {
         this.status = StatusCorrida.ACEITA;
     }
 
-    public void calcularPreco(){
+    public void calcularPreco(double distanciaKm){
         Categoria categoriaVeiculo = this.motorista.getVeiculo().getCategoria();
 
         double tarifaBase = 0;
@@ -45,9 +45,45 @@ public class Corrida {
         }
 
         this.preco = tarifaBase + (distanciaKm * valorPorKm);
+        System.out.println("Valor da corrida: " + this.preco);
     }
 
+    public void finalizarViagem(){
+        this.status = StatusCorrida.FINALIZADA;
+        if (motorista != null){
+            motorista.finalizarCorrida();
+        }
+    }
 
+    public double getPreco() {
+        return preco;
+    }
 
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
 
+    public Motorista getMotorista() {
+        return motorista;
+    }
+
+    public void setMotorista(Motorista motorista) {
+        this.motorista = motorista;
+    }
+
+    public StatusCorrida getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusCorrida status) {
+        this.status = status;
+    }
+
+    public Passageiro getPassageiro() {
+        return passageiro;
+    }
+
+    public void setPassageiro(Passageiro passageiro) {
+        this.passageiro = passageiro;
+    }
 }
