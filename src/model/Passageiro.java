@@ -1,66 +1,20 @@
 package model;
-//inicio do codigo da classe passageiro
-public class Passageiro {
 
-   private String nome; 
-   private int cpf;
-   private int telefone;
-   private int senha;
-   private int formasPagamento;
+public class Passageiro extends Usuario{
 
-   public Passageiro(String nome, int cpf, int telefone, int senha, int formasPagamento) {
-      this.nome = nome;
-      this.cpf = cpf;
-      this.telefone = telefone;
-      this.senha = senha;
-      this.formasPagamento = formasPagamento;
-   }
-   public String getNome() {
-      return nome;
+   private String metodosPagamento ;
+
+   public Passageiro(String cpf, String email, String nome, String senha, String telefone, String metodosPagamento) {
+      super(cpf, email, nome, senha, telefone);
+       this.metodosPagamento = metodosPagamento;
    }
 
-   public void setNome(String nome) {
-      this.nome = nome;
+   public String getMetodosPagamento() {
+      return metodosPagamento;
    }
 
-   public int getCpf() {
-      return cpf;
+   public void setMetodosPagamento(String metodosPagamento) {
+      this.metodosPagamento = metodosPagamento;
    }
-   public void setCpf( int cpf) {
-      this.cpf = cpf;
-   }
-
-   public int getTelefone() {
-      return telefone;
-   }
-
-   public void setTelefone(int telefone) {
-      this.telefone = telefone;
-   }
-
-   public int getSenha() {
-      return senha;
-   }
-   
-   public void setSenha( int senha) {
-      this.senha = senha;
-   }
-
-   public int getFormasPagamento() {
-      return formasPagamento;
-   }
-
-   public void setFormasPagamento(int formasPagamento) {
-      this.formasPagamento = formasPagamento;
-   }
-
-   
-   
-
-
-
-
-
-
-
 }
+
