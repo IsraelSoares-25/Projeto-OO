@@ -4,10 +4,10 @@ public abstract class Usuario {
     private String nome;
     private String cpf;
     private String email;
-    private int telefone;
+    private String telefone;
     private String senha;
 
-    public Usuario(String cpf, String email, String nome, String senha, int telefone) {
+    public Usuario(String cpf, String email, String nome, String senha, String telefone) {
         this.cpf = cpf;
         this.email = email;
         this.nome = nome;
@@ -47,11 +47,11 @@ public abstract class Usuario {
         this.senha = senha;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 }
