@@ -9,22 +9,22 @@ public class Veiculo {
     private String modelo;
     private String cor;
     private int ano;
-    private Categoria categoria;
+    private Categoria categoriaVeiculo;
 
     public Veiculo(String placa, String modelo, String cor, int ano, Categoria categoria) {
         this.placa = placa;
         this.modelo = modelo;
         this.cor = cor;
         this.ano= ano;
-        this.categoria = categoria;
+        this.categoriaVeiculo = categoria;
     }
 
     public Categoria getCategoria() {
-        return categoria;
+        return categoriaVeiculo;
     }
 
     public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+        this.categoriaVeiculo= categoria;
     }
 
     public String getPlaca () {

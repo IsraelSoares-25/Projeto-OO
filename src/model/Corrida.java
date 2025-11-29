@@ -30,5 +30,24 @@ public class Corrida {
         this.status = StatusCorrida.ACEITA;
     }
 
+    public void calcularPreco(){
+        Categoria categoriaVeiculo = this.motorista.getVeiculo().getCategoria();
+
+        double tarifaBase = 0;
+        double valorPorKm = 0;
+
+        if (categoriaVeiculo == Categoria.COMUM){
+            tarifaBase = 5.00;
+            valorPorKm = 1.00;
+        } else {
+            tarifaBase = 9.00;
+            valorPorKm = 2.20;
+        }
+
+        this.preco = tarifaBase + (distanciaKm * valorPorKm);
+    }
+
+
+
 
 }
