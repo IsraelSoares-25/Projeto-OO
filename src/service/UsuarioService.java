@@ -20,7 +20,17 @@ public class UsuarioService {
     public void listar() {
         for  (Usuario usuario : usuarios) {
             JOptionPane.showMessageDialog(null, "Nome: " + usuario.getNome() +
-                    "\nSenha: " + usuario.getSenha() + "Telefone: " + usuario.getTelefone());
+                    "\nSenha: " + usuario.getSenha() +
+                    "Telefone: " + usuario.getTelefone() +
+                    "Email: " + usuario.getEmail());
         }
+    }
+    public Usuario buscarUsuario (String nome) {
+        for  (Usuario usuario : usuarios) {
+            if (usuario.getNome().equals(nome)) {
+                return usuario;
+            }
+        }
+        return null;
     }
 }
