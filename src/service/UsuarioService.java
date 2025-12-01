@@ -1,6 +1,8 @@
 package service;
 
 import java.util.ArrayList;
+
+import model.Motorista;
 import model.Usuario;
 import javax.swing.*;
 
@@ -19,10 +21,15 @@ public class UsuarioService {
     }
     public void listar() {
         for  (Usuario usuario : usuarios) {
-            JOptionPane.showMessageDialog(null, "Nome: " + usuario.getNome() +
+            String msg = "Nome: " + usuario.getNome() +
                     "\nSenha: " + usuario.getSenha() +
                     "Telefone: " + usuario.getTelefone() +
-                    "Email: " + usuario.getEmail());
+                    "Email: " + usuario.getEmail();
+            if(usuario instanceof Motorista) {
+                Motorista m = (Motorista) usuario;
+                msg += "\nModelo do Carro: " + m.getVeiculo().getModelo() + "\nPlaca: " + m.getVeiculo().getPlaca();
+                JOptionPane.showMessageDialog(null, msg);
+            }
         }
     }
     public Usuario buscarUsuario (String nome) {
