@@ -1,6 +1,6 @@
 package service;
 
-public class Dinheiro {
+public class Dinheiro extends PagamentoService {
     private int valor;
     public Dinheiro(int valor) {
         this.valor = valor;

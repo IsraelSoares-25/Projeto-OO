@@ -1,6 +1,6 @@
 package service;
 
-public class Cartão {
+public class Cartão extends PagamentoService {
     private int numero;
     private String senha;
     public Cartão(int numero, String senha) {
@@ -19,7 +19,7 @@ public class Cartão {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public void processarPagamento(double valor){
-        //saldo do cartão pensado em débito
+    public boolean processarPagamento(double valor){
+        return true;
     }
 }
