@@ -2,8 +2,8 @@ package service;
 
 import java.util.ArrayList;
 
-import model.Motorista;
-import model.Usuario;
+import entidades.Motorista;
+import entidades.Usuario;
 import javax.swing.*;
 
 

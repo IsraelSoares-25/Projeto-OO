@@ -1,4 +1,4 @@
-package model;
+package entidades;
 
 public abstract class Usuario {
     private String nome;

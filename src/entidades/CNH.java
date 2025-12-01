@@ -1,4 +1,4 @@
-package model;
+package entidades;
 
 public class CNH {
     private String numero;

@@ -1,5 +1,5 @@
-package model;
-import model.Veiculo.Categoria;
+package entidades;
+import entidades.Veiculo.Categoria;
 
 public class Corrida {
     public enum StatusCorrida {
