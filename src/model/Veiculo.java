@@ -1,16 +1,30 @@
 package model;
 
 public class Veiculo {
+    public enum Categoria{
+        COMUM,
+        LUXO
+    }
     private String placa;
     private String modelo;
     private String cor;
     private int ano;
+    private Categoria categoriaVeiculo;
 
-    public Veiculo(String placa, String modelo, String cor, int ano) {
+    public Veiculo(String placa, String modelo, String cor, int ano, Categoria categoria) {
         this.placa = placa;
         this.modelo = modelo;
         this.cor = cor;
         this.ano= ano;
+        this.categoriaVeiculo = categoria;
+    }
+
+    public Categoria getCategoria() {
+        return categoriaVeiculo;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoriaVeiculo= categoria;
     }
 
     public String getPlaca () {

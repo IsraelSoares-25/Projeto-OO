@@ -1,66 +1,36 @@
 package model;
-//inicio do codigo da classe passageiro
-public class Passageiro {
+import java.util.ArrayList;
+import java.util.List;
 
-   private String nome; 
-   private int cpf;
-   private int telefone;
-   private int senha;
-   private int formasPagamento;
+public class Passageiro extends Usuario{
 
-   public Passageiro(String nome, int cpf, int telefone, int senha, int formasPagamento) {
-      this.nome = nome;
-      this.cpf = cpf;
-      this.telefone = telefone;
-      this.senha = senha;
-      this.formasPagamento = formasPagamento;
-   }
-   public String getNome() {
-      return nome;
+   private List<String> metodosPagamento;
+   private Corrida corridaAtual;
+
+   public Passageiro(String cpf, String email, String nome, String senha, String telefone, String metodosPagamento) {
+      super(cpf, email, nome, senha, telefone);
+       this.metodosPagamento = new ArrayList<>();
+       this.metodosPagamento.add(metodosPagamento);
    }
 
-   public void setNome(String nome) {
-      this.nome = nome;
+   public List<String> getMetodosPagamento() {
+      return metodosPagamento;
    }
 
-   public int getCpf() {
-      return cpf;
-   }
-   public void setCpf( int cpf) {
-      this.cpf = cpf;
+   public void setMetodosPagamento(List<String> metodosPagamento) {
+      this.metodosPagamento = metodosPagamento;
    }
 
-   public int getTelefone() {
-      return telefone;
+   public Corrida getCorridaAtual() {
+      return corridaAtual;
    }
 
-   public void setTelefone(int telefone) {
-      this.telefone = telefone;
+   public void solicitarCorrida(String origem, String destino){
+
+      Corrida novaCorrida = new Corrida(this, origem, destino);
+
+      this.corridaAtual= novaCorrida;
+      System.out.println("Solicitando viagem de " + origem + " para " + destino + ". Aguarde!");
    }
-
-   public int getSenha() {
-      return senha;
-   }
-   
-   public void setSenha( int senha) {
-      this.senha = senha;
-   }
-
-   public int getFormasPagamento() {
-      return formasPagamento;
-   }
-
-   public void setFormasPagamento(int formasPagamento) {
-      this.formasPagamento = formasPagamento;
-   }
-
-   
-   
-
-
-
-
-
-
-
 }
+
