@@ -1,6 +1,7 @@
 package entidades;
 import Exceções.EstadoInvalidoDaCorridaException;
 import entidades.Veiculo.Categoria;
+import utils.CalculadoraDistancia;
 
 public class Corrida {
     public enum StatusCorrida {
@@ -30,7 +31,11 @@ public class Corrida {
         this.status = StatusCorrida.ACEITA;
     }
 
-    public double calcularPreco(double distanciaKm){
+    public double calcularPreco(){
+
+        CalculadoraDistancia calculadora = new CalculadoraDistancia();
+        double distanciaKm= CalculadoraDistancia.calcular(this.origem,this.destino);
+
         Categoria categoriaVeiculo = this.motorista.getVeiculo().getCategoria();
 
         double tarifaBase = 0;
