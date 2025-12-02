@@ -23,7 +23,10 @@ public class CadastrarUsuario<T extends Usuario> {
         T usuario = buscar(cpf);
         if ( usuario != null){
             this.listaUsuario.remove(usuario);
+        } else {
+            System.out.println("Não encontrou usuario");
         }
+
     }
 
     //troquei nome por cpf
