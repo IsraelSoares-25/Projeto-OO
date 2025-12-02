@@ -23,11 +23,11 @@ public class CadastrarUsuario<T extends Usuario> {
         T usuario = buscar(cpf);
         if ( usuario != null){
             this.listaUsuario.remove(usuario);
-        }git
+        }
     }
 
     //troquei nome por cpf
-    public Usuario buscar(String cpf) {
+    public T buscar(String cpf) {
         for  (T usuario : listaUsuario) {
             if (usuario.getCpf().equals(cpf)) {
                 return usuario;
