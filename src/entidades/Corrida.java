@@ -1,4 +1,5 @@
 package entidades;
+import Exceções.EstadoInvalidoDaCorridaException;
 import entidades.Veiculo.Categoria;
 
 public class Corrida {
@@ -21,7 +22,6 @@ public class Corrida {
         this.origem = origem;
         this.destino = destino;
         this.passageiro = passageiro;
-
         this.status = StatusCorrida.SOLICITADA;
     }
 
@@ -30,7 +30,7 @@ public class Corrida {
         this.status = StatusCorrida.ACEITA;
     }
 
-    public void calcularPreco(double distanciaKm){
+    public double calcularPreco(double distanciaKm){
         Categoria categoriaVeiculo = this.motorista.getVeiculo().getCategoria();
 
         double tarifaBase = 0;
@@ -46,6 +46,22 @@ public class Corrida {
 
         this.preco = tarifaBase + (distanciaKm * valorPorKm);
         System.out.println("Valor da corrida: " + this.preco);
+        return preco;
+    }
+    public void iniciarCorrida() throws EstadoInvalidoDaCorridaException {
+        if (this.status != StatusCorrida.ACEITA){
+            throw new EstadoInvalidoDaCorridaException("Não é Possível iniciar a viagem.",this.status);
+        }
+        this.status = StatusCorrida.EM_ANDAMENTO;
+        System.out.println("Corrida iniciada com sucesso.");
+    }
+
+    public void cancelarCorrida()throws EstadoInvalidoDaCorridaException{
+        if(this.status == StatusCorrida.EM_ANDAMENTO){
+            throw new EstadoInvalidoDaCorridaException("Não é possível cancelar a corrida:",this.status);
+        }
+        this.status = StatusCorrida.CANCELADA;
+        System.out.println("Corrida cancelada");
     }
 
     public void finalizarViagem(){
