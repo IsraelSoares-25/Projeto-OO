@@ -1,5 +1,7 @@
 package service;
 
+import Exceções.PagamentoRecusadoException;
+
 public class Cartão extends PagamentoService {
     private String numero;
     private String senha;
@@ -11,31 +13,23 @@ public class Cartão extends PagamentoService {
     }
 
     @Override
-    public boolean processarPagamento(double valor){
+    public boolean processarPagamento(double valor)throws PagamentoRecusadoException {
         this.valor = valor;
-        if (numero != null && numero.length() == 16){
-            System.out.println("Processando pagamento no cartão");
-            return true;
-        } else {
-            System.out.println("Falha no pagamento"); //add exceptions
-            return false;
+        if (numero == null || numero.length() != 16){
+            throw new PagamentoRecusadoException("o número do cartão requer 16 digitos: ");
         }
+        System.out.println("Pagamento iniciado com sucesso.");
+        return true;
     }
 
 
-    public int getNumero() {
+    public String getNumero() {
         return numero;
-    }
-    public void setNumero(int numero) {
-        this.numero = numero;
     }
     public String getSenha() {
         return senha;
     }
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-    public boolean processarPagamento(double valor){
-        return true;
     }
 }
