@@ -1,8 +1,9 @@
 package service;
 
 public class Cartão extends PagamentoService {
-    private int numero;
+    private String numero;
     private String senha;
+
     public Cartão(int numero, String senha) {
         this.numero = numero;
         this.senha = senha;
