@@ -68,13 +68,20 @@ public class Motorista extends Usuario{
         }
     }
 
-
     public CNH getCarteiraDeHabilitacao() {
         return carteiraDeHabilitacao;
     }
 
     public void setCarteiraDeHabilitacao(CNH carteiraDeHabilitacao) {
         this.carteiraDeHabilitacao = carteiraDeHabilitacao;
+    }
+
+    public Corrida getCorridaAtual() {
+        return corridaAtual;
+    }
+
+    public void setCorridaAtual(Corrida corridaAtual) {
+        this.corridaAtual = corridaAtual;
     }
 
     public boolean isDisponibilidade() {
@@ -91,9 +98,5 @@ public class Motorista extends Usuario{
 
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
-    }
-
-    public Corrida getCorridaAtual() {
-        return corridaAtual;
     }
 }
