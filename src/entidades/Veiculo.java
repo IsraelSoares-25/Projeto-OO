@@ -19,6 +19,13 @@ public class Veiculo {
         this.categoriaVeiculo = categoria;
     }
 
+    public boolean anoValido() {
+        int anoAtual = Year.now().getValue();
+        return this.ano >= 2005 && this.ano <= anoAtual;
+    }
+
+
+
     public Categoria getCategoria() {
         return categoriaVeiculo;
     }
