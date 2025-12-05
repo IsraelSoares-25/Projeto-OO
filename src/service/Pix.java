@@ -5,7 +5,7 @@ import entidades.Corrida;
 
 public class Pix extends PagamentoService {
     private String chave;
-    private Corrida corrida;
+
     public Pix(String chave) {
         this.chave = chave;
     }
@@ -15,12 +15,18 @@ public class Pix extends PagamentoService {
     public void setChave(String chave) {
         this.chave = chave;
     }
+
     public boolean processarPagamento(double valor) throws PagamentoRecusadoException {
-        double corridaPreco=this.corrida.getPreco();
-        if (valor < this.corrida.getPreco()) {
-            throw new PagamentoRecusadoException("Saldo insuficiente");
+
+        if (valor <= 0) {
+            throw new PagamentoRecusadoException("Valor inválido para pagamentos via PIX!");
         }
-        System.out.println("Valor da corrida: " + corridaPreco);
+        if (chave == null){
+            throw new PagamentoRecusadoException("Necessário informar a chave Pix!");
+        }
+
+        System.out.println("Pagamento via PIX realizado com sucesso.");
+
         return true;
     }
 }

@@ -14,11 +14,11 @@ public class PagamentoCartao extends PagamentoService {
     @Override
     public boolean processarPagamento(double valor)throws PagamentoRecusadoException {
         if(valor <= 0){
-            throw new PagamentoRecusadoException("Valor inválido para pagamentos!")
+            throw new PagamentoRecusadoException("Valor inválido para pagamentos!");
         }
 
         if (numero == null || numero.length() != 16){
-            throw new PagamentoRecusadoException("o número do cartão requer 16 digitos: ");
+            throw new PagamentoRecusadoException("O número do cartão requer 16 digitos!");
         }
 
         if (senha ==  null || senha.length()<4){
