@@ -14,14 +14,14 @@ public class CNH {
     }
 
     public boolean isValida(){
-        int anoAtual = 2025;
-
-        if(this.anoValidade < anoAtual){
-            System.out.println("Carteira inválida! Venceu em: " + this.anoValidade);
-            return false;
-        }
-        return true;
+        int anoAtual = java.time.Year.now().getValue();
+        return this.anoValidade >= anoAtual;
     }
+
+    public boolean categoriaValidaParaCarro() {
+        return this.categoria.equalsIgnoreCase("B") || this.categoria.equalsIgnoreCase("AB");
+    }
+
 
 
     public int getAnoEmissao() {

@@ -51,6 +51,7 @@ public class Motorista extends Usuario{
             this.corridaAtual.getPassageiro().setCorridaAtual(null);
         }
 
+
         this.corridaAtual = null;
         disponibilidade = true;
 
