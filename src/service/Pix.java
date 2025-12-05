@@ -19,7 +19,7 @@ public class Pix extends PagamentoService {
     public boolean processarPagamento(double valor) throws PagamentoRecusadoException {
 
         if (valor <= 0) {
-            throw new PagamentoRecusadoException("Valor inválido para pagamentos via PIX!");
+            throw new PagamentoRecusadoException("Valor invalido para pagamentos via Pix!");
         }
         if (chave == null){
             throw new PagamentoRecusadoException("Necessário informar a chave Pix!");
