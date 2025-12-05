@@ -14,7 +14,6 @@ public class UsuarioService<T extends Usuario> {
     public void adicionar(T usuario) {
         if (buscar(usuario.getCpf()) != null) {
             throw new IllegalArgumentException("Já existe usuario com esse cpf");
-            return;
         }
         this.usuarios.add(usuario);
     }

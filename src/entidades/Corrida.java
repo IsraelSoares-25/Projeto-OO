@@ -13,7 +13,6 @@ public class Corrida {
     }
     private Passageiro passageiro;
     private Motorista motorista;
-
     private String origem;
     private String destino;
     private double preco;
@@ -30,7 +29,7 @@ public class Corrida {
         }
     }
 
-    public void atribuirMotorista(Motorista motorista){
+    public void atribuirMotorista(Motorista motorista) throws EstadoInvalidoDaCorridaException {
         if (motorista == null) {
             throw new EstadoInvalidoDaCorridaException("Motorista inválido.");
         }
@@ -46,7 +45,7 @@ public class Corrida {
         motorista.setDisponibilidade(false);
     }
 
-    public double calcularPreco(){
+    public double calcularPreco() throws EstadoInvalidoDaCorridaException {
         if (this.motorista == null || this.motorista.getVeiculo() == null) {
             throw new EstadoInvalidoDaCorridaException("Não é possível calcular o preço sem um motorista ou um veículo atribuído.");
         }
@@ -102,7 +101,7 @@ public class Corrida {
         }
     }
 
-    public void finalizarViagem(){
+    public void finalizarViagem() throws EstadoInvalidoDaCorridaException {
         this.status = StatusCorrida.FINALIZADA;
         calcularPreco();
 
@@ -118,7 +117,21 @@ public class Corrida {
 
         System.out.println("Corrida finalizada com sucesso! O valor da corrida foi de: " + this.preco);
     }
+    public String getDestino() {
+        return destino;
+    }
 
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
+    public String getOrigem() {
+        return origem;
+    }
+
+    public void setOrigem(String origem) {
+        this.origem = origem;
+    }
     public double getPreco() {
         return preco;
     }

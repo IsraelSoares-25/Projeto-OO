@@ -1,4 +1,5 @@
 package entidades;
+import java.time.Year;
 
 public class Veiculo {
     public enum Categoria{

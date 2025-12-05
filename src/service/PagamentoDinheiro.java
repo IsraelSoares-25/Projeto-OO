@@ -1,6 +1,7 @@
 package service;
 
 import Exceções.PagamentoRecusadoException;
+import Exceções.SaldoInsuficienteException;
 import entidades.Corrida;
 
 public class PagamentoDinheiro extends PagamentoService {
@@ -21,11 +22,11 @@ public class PagamentoDinheiro extends PagamentoService {
         this.valorEmDinheiro = valor;
     }
 
-    public boolean processarPagamento(double valor) throws PagamentoRecusadoException {
+    public boolean processarPagamento(double valor) throws SaldoInsuficienteException {
         double preco = corrida.getPreco();
 
         if (valorEmDinheiro < preco) {
-            throw new PagamentoRecusadoException("Saldo insuficiente");
+            throw new SaldoInsuficienteException("Saldo insuficiente");
         }
 
         System.out.println("Pagamento em dinheiro realizado.");

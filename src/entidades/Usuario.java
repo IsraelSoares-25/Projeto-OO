@@ -52,7 +52,7 @@ public abstract class Usuario {
         return mediaAvaliacoes;
     }
 
-    public int getNumAvaliacoes{
+    public int getNumAvaliacoes (){
         return avaliacoes.size();
     }
 
