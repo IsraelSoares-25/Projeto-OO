@@ -3,11 +3,12 @@ import java.util.ArrayList;
 import java.util.List;
 import entidades.Usuario;
 
-public class CadastrarUsuario<T extends Usuario> {
-    private List<T> listaUsuario;
+public class UsuarioService<T extends Usuario> {
 
-    public CadastrarUsuario() {
-        this.listaUsuario = new ArrayList<>();
+    private List<T> usuarios;
+
+    public UsuarioService() {
+        this.usuarios = new ArrayList<>();
     }
 
     public void adicionar(T usuario) {
@@ -15,14 +16,14 @@ public class CadastrarUsuario<T extends Usuario> {
             System.out.println("Já existe usuario com esse cpf"); //vamos criar uma exception pra cá dps
             return;
         }
-        this.listaUsuario.add(usuario);
+        this.usuarios.add(usuario);
         System.out.println("Cadastro de " + usuario.getNome() + " realizado com sucesso!");
     }
 
     public void remover(String cpf) {
         T usuario = buscar(cpf);
         if ( usuario != null){
-            this.listaUsuario.remove(usuario);
+            this.usuarios.remove(usuario);
         } else {
             System.out.println("Não encontrou usuario");
         }
@@ -31,7 +32,7 @@ public class CadastrarUsuario<T extends Usuario> {
 
     //troquei nome por cpf
     public T buscar(String cpf) {
-        for  (T usuario : listaUsuario) {
+        for  (T usuario : usuarios) {
             if (usuario.getCpf().equals(cpf)) {
                 return usuario;
             }
@@ -40,7 +41,7 @@ public class CadastrarUsuario<T extends Usuario> {
     }
 
     public List<T> mostrar() {
-        return this.listaUsuario;
+        return this.usuarios;
     }
 
 
