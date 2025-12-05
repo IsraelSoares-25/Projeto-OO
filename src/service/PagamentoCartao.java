@@ -2,22 +2,29 @@ package service;
 
 import Exceções.PagamentoRecusadoException;
 
-public class Cartão extends PagamentoService {
+public class PagamentoCartao extends PagamentoService {
     private String numero;
     private String senha;
-    private double valor;
 
-    public Cartão(String numero, String senha) {
+    public PagamentoCartao(String numero, String senha) {
         this.numero = numero;
         this.senha = senha;
     }
 
     @Override
     public boolean processarPagamento(double valor)throws PagamentoRecusadoException {
-        this.valor = valor;
+        if(valor <= 0){
+            throw new PagamentoRecusadoException("Valor inválido para pagamentos!")
+        }
+
         if (numero == null || numero.length() != 16){
             throw new PagamentoRecusadoException("o número do cartão requer 16 digitos: ");
         }
+
+        if (senha ==  null || senha.length()<4){
+            throw new PagamentoRecusadoException("Senha Invalida");
+        }
+
         System.out.println("Pagamento iniciado com sucesso.");
         return true;
     }
