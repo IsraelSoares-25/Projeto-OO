@@ -13,20 +13,18 @@ public class UsuarioService<T extends Usuario> {
 
     public void adicionar(T usuario) {
         if (buscar(usuario.getCpf()) != null) {
-            System.out.println("Já existe usuario com esse cpf"); //vamos criar uma exception pra cá dps
+            throw new IllegalArgumentException("Já existe usuario com esse cpf");
             return;
         }
         this.usuarios.add(usuario);
-        System.out.println("Cadastro de " + usuario.getNome() + " realizado com sucesso!");
     }
 
     public void remover(String cpf) {
         T usuario = buscar(cpf);
-        if ( usuario != null){
-            this.usuarios.remove(usuario);
-        } else {
-            System.out.println("Não encontrou usuario");
+        if ( usuario == null){
+            throw new IllegalArgumentException("Não encontrou usuario");
         }
+        this.usuarios.remove(usuario);
 
     }
 
@@ -40,7 +38,7 @@ public class UsuarioService<T extends Usuario> {
         return null;
     }
 
-    public List<T> mostrar() {
+    public List<T> mostrarUsuarios() {
         return this.usuarios;
     }
 
