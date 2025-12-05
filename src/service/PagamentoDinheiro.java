@@ -4,6 +4,7 @@ import Exceções.PagamentoRecusadoException;
 import entidades.Corrida;
 
 public class PagamentoDinheiro extends PagamentoService {
+
     private double valorEmDinheiro;
     private Corrida corrida;
 
@@ -20,10 +21,10 @@ public class PagamentoDinheiro extends PagamentoService {
         this.valorEmDinheiro = valor;
     }
 
-    public boolean processarPagamento(double valor)throws PagamentoRecusadoException {
+    public boolean processarPagamento(double valor) throws PagamentoRecusadoException {
         double preco = corrida.getPreco();
 
-        if (valor < preco) {
+        if (valorEmDinheiro < preco) {
             throw new PagamentoRecusadoException("Saldo insuficiente");
         }
 
