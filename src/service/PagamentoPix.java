@@ -1,12 +1,11 @@
 package service;
 
 import Exceções.PagamentoRecusadoException;
-import entidades.Corrida;
 
-public class Pix extends PagamentoService {
+public class PagamentoPix extends PagamentoService {
     private String chave;
 
-    public Pix(String chave) {
+    public PagamentoPix(String chave) {
         this.chave = chave;
     }
     public String getChave() {
