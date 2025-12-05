@@ -1,5 +1,7 @@
 package entidades;
 
+import Exceções.EstadoInvalidoDaCorridaException;
+
 public class Motorista extends Usuario{
 
     private boolean disponibilidade;
@@ -7,28 +9,62 @@ public class Motorista extends Usuario{
     private CNH carteiraDeHabilitacao ;
     private Corrida corridaAtual;
 
-    public Motorista(String cpf, String email, String nome, String senha, String telefone, CNH carteiraDeHabilitacao, Veiculo veiculo) {
-        super(cpf, email, nome, senha, telefone);
+    public Motorista(String nome, String cpf, String email, String telefone, String senha, CNH carteiraDeHabilitacao, Veiculo veiculo) {
+        super(nome, cpf, email, telefone, senha);
         this.carteiraDeHabilitacao = carteiraDeHabilitacao;
         this.veiculo = veiculo;
         this.disponibilidade = true;
     }
 
-    public void aceitarCorrida(Corrida novaCorrida) {
-        if (this.disponibilidade) {
-            this.corridaAtual = novaCorrida;
-            this.disponibilidade = false;
-            novaCorrida.setStatus(Corrida.StatusCorrida.ACEITA);
-            System.out.println("O motorista " + getNome() + " aceitou sua corrida!"); //so pra validar msm
+    public void aceitarCorrida(Corrida novaCorrida) throws EstadoInvalidoDaCorridaException {
+        if (novaCorrida == null){
+            throw new EstadoInvalidoDaCorridaException("Não existe corridas para aceitar!");
         }
-        else {
-            System.out.println("Motorista " + getNome() + " está ocupado!");
+        if (!this.disponibilidade){
+            throw new EstadoInvalidoDaCorridaException("Motorista indisponível para aceitar corridas.");
         }
+        if (novaCorrida.getStatus() != Corrida.StatusCorrida.SOLICITADA) {
+            throw new EstadoInvalidoDaCorridaException("A corrida não está disponível para ser aceita.");
+        }
+
+        this.corridaAtual = novaCorrida;
+        this.disponibilidade = false;
+        novaCorrida.setStatus(Corrida.StatusCorrida.ACEITA);
+        System.out.println("O motorista " + getNome() + " aceitou sua corrida!");
+
+
     }
 
-    public void finalizarCorrida() {
+    public void finalizarCorrida() throws EstadoInvalidoDaCorridaException{
+        if (this.corridaAtual == null) {
+            throw new EstadoInvalidoDaCorridaException("Não há corrida ativa para finalizar.");
+        }
+
+        if (this.corridaAtual.getStatus() != Corrida.StatusCorrida.ACEITA &&
+                this.corridaAtual.getStatus() != Corrida.StatusCorrida.EM_ANDAMENTO) {
+            throw new EstadoInvalidoDaCorridaException("Essa corrida não pode ser finalizada! Estado Inválido!");
+        }
+
+        this.corridaAtual.setStatus(Corrida.StatusCorrida.FINALIZADA);
+
+        if (this.corridaAtual.getPassageiro() != null) {
+            this.corridaAtual.getPassageiro().setCorridaAtual(null);
+        }
+
+        this.corridaAtual = null;
         disponibilidade = true;
+
         System.out.println("Motorista disponivel novamente!");
+    }
+
+    public void corridaCancelada() throws EstadoInvalidoDaCorridaException {
+        if (this.corridaAtual != null) {
+            System.out.println("A corrida foi cancelada pelo passageiro.");
+            this.corridaAtual = null;
+            this.disponibilidade = true;
+        } else {
+            throw new EstadoInvalidoDaCorridaException("Nenhuma corrida para cancelar.");
+        }
     }
 
 

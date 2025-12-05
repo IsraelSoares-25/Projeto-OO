@@ -31,8 +31,11 @@ public class Passageiro extends Usuario{
    public Corrida getCorridaAtual() {
       return corridaAtual;
    }
+    public void setCorridaAtual(Corrida corridaAtual) {
+        this.corridaAtual = corridaAtual;
+    }
 
-   public void solicitarCorrida(String origem, String destino) {
+        public void solicitarCorrida(String origem, String destino) {
        this.corridaAtual= new Corrida(this, origem, destino);
        System.out.println("Solicitando viagem de " + origem + " para " + destino + ". Aguarde!");
    }

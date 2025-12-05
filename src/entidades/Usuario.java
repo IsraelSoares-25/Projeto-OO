@@ -32,6 +32,7 @@ public abstract class Usuario {
         avaliacoes.add(nota);
         atualizarMedia();
     }
+
     private void atualizarMedia(){
         double soma = 0;
 
@@ -95,6 +96,8 @@ public abstract class Usuario {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+
 
     public boolean isPossuiPendencias() {
         return possuiPendencias;

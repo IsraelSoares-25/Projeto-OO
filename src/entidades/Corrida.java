@@ -55,18 +55,27 @@ public class Corrida {
     }
     public void iniciarCorrida() throws EstadoInvalidoDaCorridaException {
         if (this.status != StatusCorrida.ACEITA){
-            throw new EstadoInvalidoDaCorridaException("Não é Possível iniciar a viagem.",this.status);
+            throw new EstadoInvalidoDaCorridaException("Não é Possível iniciar a viagem.");
         }
         this.status = StatusCorrida.EM_ANDAMENTO;
         System.out.println("Corrida iniciada com sucesso.");
     }
 
-    public void cancelarCorrida()throws EstadoInvalidoDaCorridaException{
-        if(this.status == StatusCorrida.EM_ANDAMENTO){
-            throw new EstadoInvalidoDaCorridaException("Não é possível cancelar a corrida:",this.status);
+    public void cancelarCorrida() throws EstadoInvalidoDaCorridaException{
+        if (this.status == StatusCorrida.EM_ANDAMENTO ||
+            this.status == StatusCorrida.FINALIZADA ||
+            this.status == StatusCorrida.CANCELADA){
+
+            throw new EstadoInvalidoDaCorridaException("Não é possível cancelar a corrida pois já está " + this.status);
         }
+
         this.status = StatusCorrida.CANCELADA;
         System.out.println("Corrida cancelada");
+
+        if (motorista != null) {
+            motorista.corridaCancelada();
+            motorista = null;
+        }
     }
 
     public void finalizarViagem(){
