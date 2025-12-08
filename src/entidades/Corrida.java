@@ -1,6 +1,6 @@
 package entidades;
 import Exceções.EstadoInvalidoDaCorridaException;
-import entidades.Veiculo.Categoria;
+import Exceções.NenhumMotoristaException;
 import utils.CalculadoraDistancia;
 
 public class Corrida {
@@ -29,9 +29,9 @@ public class Corrida {
         }
     }
 
-    public void atribuirMotorista(Motorista motorista) throws EstadoInvalidoDaCorridaException {
+    public void atribuirMotorista(Motorista motorista) throws EstadoInvalidoDaCorridaException,NenhumMotoristaException {
         if (motorista == null) {
-            throw new EstadoInvalidoDaCorridaException("Motorista inválido.");
+            throw new NenhumMotoristaException("Nenhum motorista para atribuir!");
         }
 
         if (!motorista.isDisponibilidade()) {
