@@ -33,6 +33,12 @@ public abstract class Usuario {
         atualizarMedia();
     }
 
+    public void adicionarAvaliacao(int nota, String comentario) {
+        if (comentario != null && !comentario.trim().isEmpty()) {
+            System.out.println("Feedback textual recebido: " + comentario);
+        }
+    }
+
     private void atualizarMedia(){
         double soma = 0;
 
