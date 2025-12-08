@@ -34,7 +34,7 @@ public abstract class Usuario {
     }
 
     public void adicionarAvaliacao(int nota, String comentario) {
-        if (comentario != null && !comentario.trim().isEmpty()) {
+        if (comentario != null) {
             System.out.println("Feedback textual recebido: " + comentario);
         }
     }
