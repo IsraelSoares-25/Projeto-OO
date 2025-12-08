@@ -39,6 +39,7 @@ public abstract class Usuario {
         }
     }
 
+
     private void atualizarMedia(){
         double soma = 0;
 
