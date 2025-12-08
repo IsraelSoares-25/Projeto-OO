@@ -48,6 +48,7 @@ public abstract class Usuario {
         this.mediaAvaliacoes = soma/avaliacoes.size();
     }
 
+
     public double getMediaAvaliacoes() {
         return mediaAvaliacoes;
     }
