@@ -1,5 +1,7 @@
 package entidades;
 import Exceções.EstadoInvalidoDaCorridaException;
+import Exceções.NenhumMotoristaException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,10 +37,19 @@ public class Passageiro extends Usuario{
         this.corridaAtual = corridaAtual;
     }
 
-        public void solicitarCorrida(String origem, String destino) {
-       this.corridaAtual= new Corrida(this, origem, destino);
-       System.out.println("Solicitando viagem de " + origem + " para " + destino + ". Aguarde!");
-   }
+    public void solicitarCorrida(String origem, String destino, List<Motorista> motoristas)
+            throws NenhumMotoristaException {
+        boolean temMotorista = motoristas.stream()
+                .anyMatch(Motorista::isDisponibilidade);
+        if (!temMotorista) {
+            throw new NenhumMotoristaException(
+                    "Nenhum motorista disponível para " + this.getNome()
+            );
+        }
+        this.corridaAtual = new Corrida(this, origem, destino);
+        System.out.println("Solicitando viagem de "
+                + origem + " para " + destino + ". Aguarde!");
+    }
 
    public void cancelarCorrida()throws EstadoInvalidoDaCorridaException {
        if(this.corridaAtual != null){
